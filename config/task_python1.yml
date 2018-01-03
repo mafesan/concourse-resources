@@ -6,5 +6,4 @@ image_resource:
   source: {repository: frolvlad/alpine-python3}
 
 run:
-  path: python3
-  args: [concourse-resources/scripts/hello_python.py]
+  path: ls

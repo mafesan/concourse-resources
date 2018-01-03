@@ -1,0 +1,16 @@
+---
+resources:
+- name: concourse-resources
+  type: git
+  source:
+    uri: https://github.com/mghfdez/concourse-resources.git
+    branch: master
+
+jobs:
+- name: job-hello-python
+  public: true
+  plan:
+  - get: concourse-resources
+  - task: hello-python
+    file: concourse-resources/config/task_python1.yml
+
