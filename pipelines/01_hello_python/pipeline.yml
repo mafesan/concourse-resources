@@ -14,3 +14,5 @@ jobs:
   - task: hello-python
     file: concourse-resources/config/task_python1.yml
 
+input_mapping:
+  my_repo: concourse-resources

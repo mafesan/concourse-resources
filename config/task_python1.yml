@@ -5,6 +5,9 @@ image_resource:
   type: docker-image
   source: {repository: frolvlad/alpine-python3}
 
+inputs:
+  -name: my_repo
+
 run:
   path: python3
-  args: [concourse-resources/task-scripts/hello_python.py]
+  args: [my_repo/task-scripts/hello_python.py]
