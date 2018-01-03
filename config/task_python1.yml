@@ -6,8 +6,8 @@ image_resource:
   source: {repository: frolvlad/alpine-python3}
 
 inputs:
-  -name: my_repo
+- name: miparametro
 
 run:
   path: python3
-  args: [my_repo/task-scripts/hello_python.py]
+  args: [miparametro/task-scripts/hello_python.py]

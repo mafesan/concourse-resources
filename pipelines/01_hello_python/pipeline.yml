@@ -15,4 +15,4 @@ jobs:
     file: concourse-resources/config/task_python1.yml
 
 input_mapping:
-  my_repo: concourse-resources
+  miparametro: concourse-resources
