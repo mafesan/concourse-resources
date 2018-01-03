@@ -7,11 +7,23 @@ resources:
     branch: master
 
 jobs:
+
 - name: job-hello-python
   public: true
   plan:
   - get: concourse-resources
+    passed: [job-file-python]
+    trigger: true
   - task: hello-python
     file: concourse-resources/config/task_python1.yml
+    input_mapping:
+        miparametro: concourse-resources
+
+- name: job-file-python
+  public: true
+  plan:
+  - get: concourse-resources
+  - task: file-python
+    file: concourse-resources/config/task_python2.yml
     input_mapping:
         miparametro: concourse-resources
