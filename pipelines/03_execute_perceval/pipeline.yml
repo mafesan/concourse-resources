@@ -1,0 +1,26 @@
+---
+resources:
+- name: concourse-resources
+  type: git
+  source:
+    uri: https://github.com/mghfdez/concourse-resources.git
+    branch: master
+
+- name: perceval-repo
+  type: git
+  source:
+    uri: https://github.com/grimoirelab/perceval
+    branch: master
+
+jobs:
+
+- name: job-install-perceval
+  public: true
+  plan:
+  - get: concourse-resources
+  - get: perceval-repo
+  - task: install-perceval
+    file: concourse-resources/config/install-perceval.yml
+    input_mapping:
+        my_resources: concourse-resources
+        my_perceval: perceval-repo

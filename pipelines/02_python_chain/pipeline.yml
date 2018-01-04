@@ -12,8 +12,6 @@ jobs:
   public: true
   plan:
   - get: concourse-resources
-    passed: [job-file-python]
-    trigger: true
   - task: hello-python
     file: concourse-resources/config/task_python1.yml
     input_mapping:
@@ -23,6 +21,8 @@ jobs:
   public: true
   plan:
   - get: concourse-resources
+    passed: [job-hello-python]
+    trigger: true
   - task: file-python
     file: concourse-resources/config/task_python2.yml
     input_mapping:
