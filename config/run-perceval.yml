@@ -3,10 +3,11 @@ platform: linux
 
 image_resource:
   type: docker-image
-  source: {repository: frolvlad/alpine-python3}
+  source: {repository: grimoirelab/perceval}
 
 inputs:
-- name: miparametro
+- name: my_resources
+- name: my_perceval
 
 run:
-  path: ./miparametro/task-scripts/run_perceval.sh
+  path: ./my_resources/task-scripts/run_perceval.sh

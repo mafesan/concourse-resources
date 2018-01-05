@@ -12,14 +12,20 @@ resources:
     uri: https://github.com/grimoirelab/perceval
     branch: master
 
+- name: my-timer
+  type: time
+  source:
+    interval: 2m
+
 jobs:
 
-- name: job-install-perceval
+- name: job-run-perceval
   public: true
   plan:
+  - get: my-timer
   - get: concourse-resources
   - get: perceval-repo
-  - task: install-perceval
+  - task: run-perceval
     file: concourse-resources/config/install-perceval.yml
     input_mapping:
         my_resources: concourse-resources

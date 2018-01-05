@@ -3,11 +3,21 @@ platform: linux
 
 image_resource:
   type: docker-image
-  source: {repository: frolvlad/alpine-python3}
+  source:
+    repository: python
+    tag: 3.4
 
 inputs:
-- name: my_resources
-- name: my_perceval
+- name: perceval-repo
 
 run:
-  path: ./my_resources/task-scripts/install_perceval.sh
+  path: sh
+  args:
+  - -exc
+  - |
+    cd perceval-repo
+    pip3 install -r requirements.txt
+    pip3 install httpretty==0.8.6
+    pip3 install .
+    cd tests
+    python3 run_tests.py
